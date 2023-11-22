@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Height Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.5);
+            width: 100%;
+            height: 100%;
+        }
+
+        #popup-content {
+    animation: fadeIn 1s;
+    background-color: #fff;
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+@media (min-width: 600px) {
+    #popup-content {
+        width: 300px;
+        height: 200px;
+    }
+}
+
+        #popup-content h1 {
+            margin-top: 0;
+        }
+
+        #popup-content p {
+            font-size: 20px;
+        }
+
+        #popup-content button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+
+    .entry-form {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 100px;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+
+    .entry-form input {
+        padding: 10px 20px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    .entry-form button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+    }
+
+
+
+    </style>
+</head>
+<body>
+
+    <h1>
+        Height Calculator
+    </h1>
+
+
+    <div class="entry-form">
+
+        <input type="text" id="height" name="height" placeholder="Enter Height in cm">
+        <button id="calculate">Calculate</button>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup">
+        <div id="popup-content">
+            <h1>Height Calculator</h1>
+            <p id="result"></p>
+            <button id="close">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const height = document.getElementById('height');
+        const calculate = document.getElementById('calculate');
+        const popup = document.getElementById('popup');
+        const popupContent = document.getElementById('popup-content');
+        const result = document.getElementById('result');
+        const close = document.getElementById('close');
+
+        calculate.addEventListener('click', () => {
+            result.innerHTML = `
+                <p>Your height is ${height.value}cm</p>
+            `;
+
+            popup.style.display = 'block';
+        });
+
+        close.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
